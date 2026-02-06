@@ -18,4 +18,9 @@ class ApiConstants {
   static String category = "category";
   static String sellerId = "seller_id";
   static String updatedAt = "updated_at";
+
+  static String shopName = "shop_name";
+  static String address = "address";
+  static String photoPath = "photo_path";
+  static String isProfileCompleted = "is_profile_completed";
 }

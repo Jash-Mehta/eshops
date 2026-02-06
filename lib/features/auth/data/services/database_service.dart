@@ -6,6 +6,7 @@ class DatabaseService {
   static Database? _database;
   static const String _tableName = 'users';
   static const String _productsTableName = 'products';
+  static const String _sellerProfilesTableName = 'seller_profiles';
 
   static Future<Database> get database async {
     if (_database != null) return _database!;
@@ -19,7 +20,7 @@ class DatabaseService {
 
     return await openDatabase(
       path,
-      version: 4,
+      version: 5,
       onCreate: (db, version) async {
         await db.execute('''
           CREATE TABLE IF NOT EXISTS $_tableName(
@@ -47,6 +48,18 @@ class DatabaseService {
             price REAL NOT NULL,
             category TEXT,
             seller_id INTEGER NOT NULL,
+            created_at TEXT NOT NULL,
+            updated_at TEXT NOT NULL
+          )
+        ''');
+
+        await db.execute('''
+          CREATE TABLE IF NOT EXISTS $_sellerProfilesTableName (
+            seller_id INTEGER PRIMARY KEY,
+            shop_name TEXT NOT NULL,
+            address TEXT NOT NULL,
+            photo_path TEXT,
+            is_profile_completed INTEGER NOT NULL DEFAULT 0,
             created_at TEXT NOT NULL,
             updated_at TEXT NOT NULL
           )
@@ -93,6 +106,20 @@ class DatabaseService {
               'ALTER TABLE $_tableName ADD COLUMN is_deactivated INTEGER NOT NULL DEFAULT 0',
             );
           } catch (_) {}
+        }
+
+        if (oldVersion < 5) {
+          await db.execute('''
+            CREATE TABLE IF NOT EXISTS $_sellerProfilesTableName (
+              seller_id INTEGER PRIMARY KEY,
+              shop_name TEXT NOT NULL,
+              address TEXT NOT NULL,
+              photo_path TEXT,
+              is_profile_completed INTEGER NOT NULL DEFAULT 0,
+              created_at TEXT NOT NULL,
+              updated_at TEXT NOT NULL
+            )
+          ''');
         }
       },
     );
