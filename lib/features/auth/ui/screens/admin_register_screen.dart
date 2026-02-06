@@ -5,6 +5,7 @@ import '../../../../core/ui/theme/colors.dart';
 import '../../../../core/ui/widgets/app_button.dart';
 import '../../../../core/ui/widgets/app_input_field.dart';
 import '../../../../core/ui/widgets/app_text.dart';
+import '../../../../core/utils/validators.dart';
 import '../bloc/auth_bloc.dart';
 
 class AdminRegisterScreen extends StatefulWidget {
@@ -131,15 +132,7 @@ class _AdminRegisterScreenState extends State<AdminRegisterScreen> {
                   textInputAction: TextInputAction.next,
                   labelText: 'Username',
                   focusedBorderColor: AppColors.chineseBlue,
-                  validator: (value) {
-                    if (value == null || value.trim().isEmpty) {
-                      return 'Please enter username';
-                    }
-                    if (value.trim().length < 3) {
-                      return 'Username must be at least 3 characters';
-                    }
-                    return null;
-                  },
+                  validator: Validators.validateUsername,
                 ),
                 const SizedBox(height: 16),
                 AppInputField(
@@ -148,16 +141,7 @@ class _AdminRegisterScreenState extends State<AdminRegisterScreen> {
                   textInputAction: TextInputAction.next,
                   labelText: 'Email',
                   focusedBorderColor: AppColors.chineseBlue,
-                  validator: (value) {
-                    if (value == null || value.trim().isEmpty) {
-                      return 'Please enter email';
-                    }
-                    if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
-                        .hasMatch(value.trim())) {
-                      return 'Please enter valid email';
-                    }
-                    return null;
-                  },
+                  validator: Validators.validateEmail,
                 ),
                 const SizedBox(height: 16),
                 AppInputField(
@@ -168,15 +152,7 @@ class _AdminRegisterScreenState extends State<AdminRegisterScreen> {
                   labelText: 'Password',
                   focusedBorderColor: AppColors.chineseBlue,
                   isPassword: true,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter password';
-                    }
-                    if (value.length < 6) {
-                      return 'Password must be at least 6 characters';
-                    }
-                    return null;
-                  },
+                  validator: Validators.validatePassword,
                 ),
                 const SizedBox(height: 16),
                 AppInputField(
@@ -187,15 +163,7 @@ class _AdminRegisterScreenState extends State<AdminRegisterScreen> {
                   labelText: 'Confirm Password',
                   focusedBorderColor: AppColors.chineseBlue,
                   isPassword: true,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please confirm password';
-                    }
-                    if (value != passwordController.text) {
-                      return 'Passwords do not match';
-                    }
-                    return null;
-                  },
+                  validator: (value) => Validators.validateConfirmPassword(value, passwordController.text),
                   onFieldSubmit: (_) => _submitForm(),
                 ),
                 const SizedBox(height: 30),

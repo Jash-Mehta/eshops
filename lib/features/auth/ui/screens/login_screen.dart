@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../core/ui/theme/colors.dart';
-import '../../../../core/ui/widgets/app_button.dart';
-import '../../../../core/ui/widgets/app_input_field.dart';
 import '../../../../core/ui/widgets/app_text.dart';
+import '../../../../core/ui/widgets/app_input_field.dart';
+import '../../../../core/ui/widgets/app_button.dart';
+import '../../../../core/utils/validators.dart';
 import '../bloc/auth_bloc.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -131,16 +132,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   textInputAction: TextInputAction.next,
                   labelText: 'Email',
                   focusedBorderColor: AppColors.chineseBlue,
-                  validator: (value) {
-                    if (value == null || value.trim().isEmpty) {
-                      return 'Please enter email';
-                    }
-                    if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
-                        .hasMatch(value.trim())) {
-                      return 'Please enter valid email';
-                    }
-                    return null;
-                  },
+                  validator: Validators.validateEmail,
                 ),
                 const SizedBox(height: 16),
                 AppInputField(
@@ -151,15 +143,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   labelText: 'Password',
                   focusedBorderColor: AppColors.chineseBlue,
                   isPassword: true,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter password';
-                    }
-                    if (value.length < 6) {
-                      return 'Password must be at least 6 characters';
-                    }
-                    return null;
-                  },
+                  validator: Validators.validatePassword,
                   onFieldSubmit: (_) => _submitForm(),
                 ),
                 const SizedBox(height: 30),

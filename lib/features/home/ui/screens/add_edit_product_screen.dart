@@ -5,6 +5,7 @@ import '../../../../core/ui/theme/colors.dart';
 import '../../../../core/ui/widgets/app_button.dart';
 import '../../../../core/ui/widgets/app_input_field.dart';
 import '../../../../core/ui/widgets/app_text.dart';
+import '../../../../core/utils/validators.dart';
 import '../../data/models/product_model.dart';
 import '../bloc/product_bloc/product_bloc.dart';
 
@@ -151,12 +152,7 @@ class _AddEditProductScreenState extends State<AddEditProductScreen> {
                   keyboardType: TextInputType.text,
                   textInputAction: TextInputAction.next,
                   labelText: 'Product Name',
-                  validator: (value) {
-                    if (value == null || value.trim().isEmpty) {
-                      return 'Please enter product name';
-                    }
-                    return null;
-                  },
+                  validator: Validators.validateProductName,
                 ),
                 const SizedBox(height: 16),
                 AppInputField(
@@ -164,12 +160,7 @@ class _AddEditProductScreenState extends State<AddEditProductScreen> {
                   keyboardType: TextInputType.multiline,
                   textInputAction: TextInputAction.next,
                   labelText: 'Description',
-                  validator: (value) {
-                    if (value == null || value.trim().isEmpty) {
-                      return 'Please enter description';
-                    }
-                    return null;
-                  },
+                  validator: Validators.validateDescription,
                 ),
                 const SizedBox(height: 16),
                 AppInputField(
@@ -177,15 +168,7 @@ class _AddEditProductScreenState extends State<AddEditProductScreen> {
                   keyboardType: TextInputType.number,
                   textInputAction: TextInputAction.next,
                   labelText: 'Price',
-                  validator: (value) {
-                    if (value == null || value.trim().isEmpty) {
-                      return 'Please enter price';
-                    }
-                    if (double.tryParse(value) == null) {
-                      return 'Please enter valid price';
-                    }
-                    return null;
-                  },
+                  validator: Validators.validatePrice,
                 ),
                 const SizedBox(height: 16),
                 AppInputField(
@@ -193,12 +176,7 @@ class _AddEditProductScreenState extends State<AddEditProductScreen> {
                   keyboardType: TextInputType.text,
                   textInputAction: TextInputAction.done,
                   labelText: 'Category',
-                  validator: (value) {
-                    if (value == null || value.trim().isEmpty) {
-                      return 'Please enter category';
-                    }
-                    return null;
-                  },
+                  validator: Validators.validateCategory,
                   onFieldSubmit: (_) => _saveProduct(),
                 ),
                 const SizedBox(height: 30),
