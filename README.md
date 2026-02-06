@@ -76,7 +76,7 @@ lib/
 ## 🚦 Getting Started
 
 ### Prerequisites
-- Flutter SDK 3.10.8 or higher
+- Flutter SDK 3.10.8
 - Dart SDK compatible with Flutter version
 - Android Studio / VS Code with Flutter extensions
 - Android SDK / Xcode (for iOS development)
@@ -146,29 +146,11 @@ Configure API endpoints and other settings in the appropriate configuration file
 ### Database
 - Local SQLite database for offline data
 - Proper migration handling
-- Data synchronization with remote APIs
 
 ## 📱 Platform Support
 
 - ✅ Android
 - ✅ iOS
-- ✅ Web (Limited support)
-- ✅ macOS (Limited support)
-- ✅ Windows (Limited support)
-- ✅ Linux (Limited support)
-
-## 🧪 Testing
-
-```bash
-# Run all tests
-flutter test
-
-# Run tests with coverage
-flutter test --coverage
-
-# Run specific test file
-flutter test test/widget_test.dart
-```
 
 ## 📦 Build & Deployment
 
@@ -187,18 +169,6 @@ flutter build ios --release
 flutter build web
 ```
 
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📝 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
 ## 🐛 Issues & Support
 
 If you encounter any issues or have questions:
@@ -216,10 +186,5 @@ If you encounter any issues or have questions:
   - Product management
   - Basic e-commerce functionality
 
-## 📞 Contact
-
-For any inquiries or support, please reach out to the development team.
-
----
 
 **Built with ❤️ using Flutter**
