@@ -6,7 +6,6 @@ A modern, feature-rich e-commerce mobile application built with Flutter, impleme
 
 ### Authentication
 - User registration and login
-- OTP verification
 - Secure session management
 - Role-based access (Admin/Seller)
 
@@ -162,11 +161,6 @@ flutter build apk --release
 ### iOS IPA
 ```bash
 flutter build ios --release
-```
-
-### Web Build
-```bash
-flutter build web
 ```
 
 ## 🐛 Issues & Support
