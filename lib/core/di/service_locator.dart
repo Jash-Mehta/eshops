@@ -37,11 +37,7 @@ initServices() {
   getIt.registerFactory<ProductBloc>(
     () => ProductBloc(productRepository: getIt<ProductRepository>()),
   );
-
-  // // Register data sources
-  // getIt.registerLazySingleton<HomeRemoteDataSource>(
-  //   () => HomeRemoteDataSourceImpl(),
-  // );
+ 
 }
 
 

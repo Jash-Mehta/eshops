@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:eshops/core/utils/methods/constants.dart';
 import 'package:eshops/core/utils/methods/map.dart';
 
 class UserModel extends Equatable {
@@ -26,29 +27,29 @@ class UserModel extends Equatable {
 
   Map<String, dynamic> toMap() {
     return {
-      'id': id,
-      'uuid': uuid,
-      'username': username,
-      'email': email,
-      'password': password,
-      'is_admin': isAdmin,
-      'created_by_admin_id': createdByAdminId,
-      'is_deactivated': isDeactivated,
-      'created_at': createdAt.toIso8601String(),
+      ApiConstants.id: id,
+      ApiConstants.uuid: uuid,
+      ApiConstants.username: username,
+      ApiConstants.email: email,
+      ApiConstants.password: password,
+      ApiConstants.isAdmin: isAdmin,
+      ApiConstants.createdByAdminId: createdByAdminId,
+      ApiConstants.isDeactivated: isDeactivated,
+  ApiConstants.createdAt: createdAt.toIso8601String(),
     };
   }
 
   factory UserModel.fromMap(Map<String, dynamic> map) {
     return UserModel(
-      id: map.getInt('id'),
-      uuid: map.getString('uuid'),
-      username: map.getString('username'),
-      email: map.getString('email'),
-      password: map.getString('password'),
-      isAdmin: map.getInt('is_admin'),
-      createdByAdminId: map.getInt('created_by_admin_id'),
-      isDeactivated: map.getInt('is_deactivated'),
-      createdAt: map.getDateTime('created_at') ?? DateTime.now(),
+      id: map.getInt(ApiConstants.id),
+      uuid: map.getString(ApiConstants.uuid),
+      username: map.getString(ApiConstants.username),
+      email: map.getString(ApiConstants.email),
+      password: map.getString(ApiConstants.password),
+      isAdmin: map.getInt(ApiConstants.isAdmin),
+      createdByAdminId: map.getInt(ApiConstants.createdByAdminId),
+      isDeactivated: map.getInt(ApiConstants.isDeactivated),
+      createdAt: map.getDateTime(ApiConstants.createdAt) ?? DateTime.now(),
     );
   }
 

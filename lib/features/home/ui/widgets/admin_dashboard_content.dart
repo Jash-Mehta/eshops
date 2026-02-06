@@ -128,7 +128,7 @@ class _AdminDashboardContentState extends State<AdminDashboardContent> {
                                   .state;
                               if (authState is auth.AuthAuthenticated) {
                                 final adminId = authState.user.id;
-                                if (adminId != null && sellerId != 0) {
+                                if (adminId != null && sellerId != null && sellerId != 0) {
                                   context.read<HomeBloc>().add(
                                     ToggleSellerDeactivated(
                                       adminId: adminId,

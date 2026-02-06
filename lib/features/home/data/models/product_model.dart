@@ -1,4 +1,6 @@
 import 'package:equatable/equatable.dart';
+import '../../../../core/utils/methods/constants.dart';
+import '../../../../core/utils/methods/map.dart';
 
 class ProductModel extends Equatable{
   final int? id;
@@ -23,27 +25,27 @@ class ProductModel extends Equatable{
 
   Map<String, dynamic> toMap() {
     return {
-      'id': id,
-      'name': name,
-      'description': description,
-      'price': price,
-      'category': category,
-      'seller_id': sellerId,
-      'created_at': createdAt.toIso8601String(),
-      'updated_at': updatedAt.toIso8601String(),
+      ApiConstants.id: id,
+      ApiConstants.name: name,
+      ApiConstants.description: description,
+      ApiConstants.price: price,
+      ApiConstants.category: category,
+      ApiConstants.sellerId: sellerId,
+      ApiConstants.createdAt: createdAt.toIso8601String(),
+      ApiConstants.updatedAt: updatedAt.toIso8601String(),
     };
   }
 
   factory ProductModel.fromMap(Map<String, dynamic> map) {
     return ProductModel(
-      id: map['id']?.toInt(),
-      name: map['name'] ?? '',
-      description: map['description'] ?? '',
-      price: map['price']?.toDouble() ?? 0.0,
-      category: map['category'] ?? '',
-      sellerId: map['seller_id']?.toInt() ?? 0,
-      createdAt: DateTime.parse(map['created_at']),
-      updatedAt: DateTime.parse(map['updated_at']),
+      id: map.getInt(ApiConstants.id),
+      name: map.getString(ApiConstants.name),
+      description: map.getString(ApiConstants.description),
+      price: map.getDouble(ApiConstants.price),
+      category: map.getString(ApiConstants.category),
+      sellerId: map.getInt(ApiConstants.sellerId),
+      createdAt: map.getDateTime(ApiConstants.createdAt) ?? DateTime.now(),
+      updatedAt: map.getDateTime(ApiConstants.updatedAt) ?? DateTime.now(),
     );
   }
 
