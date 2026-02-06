@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/ui/widgets/app_text.dart';
 import '../../../../core/utils/assets/assets.dart';
 import '../bloc/product_bloc/product_bloc.dart';
-import '../screens/add_edit_product_screen.dart';
 
 class ProductListWidget extends StatefulWidget {
   final int sellerId;
